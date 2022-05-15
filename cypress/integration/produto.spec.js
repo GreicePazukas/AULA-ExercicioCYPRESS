@@ -6,7 +6,7 @@ context('Funcionalidade Página de produtos', () => {
         cy.visit('produtos')
     });
 
-    it.only('Deve selecionar um produto da lista', () => {
+    it('Deve selecionar um produto da lista', () => {
         cy.get('.product-block')
             //.first()
             //.last()
@@ -23,15 +23,22 @@ context('Funcionalidade Página de produtos', () => {
             .contains('Ariel Roll Sleeve Sweatshirt').click()
         cy.get('.button-variable-item-L').click()
         cy.get('.button-variable-item-Purple').click()
-        cy.get('.input-text').type(quantidade)
+        cy.get('.input-text').clear().type(quantidade)
         cy.get('.single_add_to_cart_button').click()
 
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-        cy.get('.woocommerce-message').should('contain',quantidade +'Ariel Roll Sleeve Sweatshirt')
+        cy.get('.woocommerce-message').should('contain',    quantidade + '1 × “Ariel Roll Sleeve Sweatshirt” ')
+    })
+
+    it.only('Deve adicionar produto ao carrinho usando o comando customizado ', () => {
+        cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'S', 'Red', 1)
+    
     });
 
     it('Deve adicionar produto ao carrinho usando o comando customizado ', () => {
-        cy.addProdutos('Aero Daily Fitness Tee ', 'M', 'Black', 1)
+        cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'M', 'Green', 1)
+
 
     });
-});
+
+    });
