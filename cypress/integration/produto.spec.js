@@ -27,10 +27,10 @@ context('Funcionalidade Página de produtos', () => {
         cy.get('.single_add_to_cart_button').click()
 
         cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
-        cy.get('.woocommerce-message').should('contain',    quantidade + '1 × “Ariel Roll Sleeve Sweatshirt” ')
+        cy.get('.woocommerce-message').should('contain', quantidade + ' × “Ariel Roll Sleeve Sweatshirt” foram adicionados no seu carrinho.')
     })
 
-    it.only('Deve adicionar produto ao carrinho usando o comando customizado ', () => {
+    it('Deve adicionar produto ao carrinho usando o comando customizado ', () => {
         cy.addProdutos('Ariel Roll Sleeve Sweatshirt', 'S', 'Red', 1)
     
     });
